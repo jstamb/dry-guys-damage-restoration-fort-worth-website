@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import { BUSINESS, TARGET_CITIES } from '../constants'
 
@@ -31,7 +31,7 @@ export default function Footer() {
             {TARGET_CITIES.slice(0, 6).map((city: any) => (
               <li key={city.name}>
                 <Link
-                  to={`/locations/${city.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`/locations/${city.name.toLowerCase().replace(/\s+/g, '-')}`}
                   className="hover:text-white"
                 >
                   {city.name}, {city.state}
@@ -44,8 +44,8 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-2 text-gray-400">
-            <li><Link to="/" className="hover:text-white">Home</Link></li>
-            <li><Link to="/contact" className="hover:text-white">Contact Us</Link></li>
+            <li><Link href="/" className="hover:text-white">Home</Link></li>
+            <li><Link href="/contact" className="hover:text-white">Contact Us</Link></li>
           </ul>
         </div>
       </div>
