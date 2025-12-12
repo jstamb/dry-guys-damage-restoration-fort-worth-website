@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
             <div className="mt-6 space-y-2 text-sm">
               <p><strong>Phone:</strong> <a href={`tel:${siteConfig.phone}`} className="hover:text-secondary-500">{siteConfig.phone}</a></p>
               <p><strong>Email:</strong> <a href={`mailto:${siteConfig.email}`} className="hover:text-secondary-500">{siteConfig.email}</a></p>
-              <p><strong>Address:</strong> {siteConfig.address}</p>
+              <p><strong>Address:</strong> {siteConfig.address.full}</p>
             </div>
           </div>
 
@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="mt-12 border-t border-gray-700 pt-8 text-center text-sm">
-          <p>&copy; {currentYear} {siteConfig.name}. All Rights Reserved.</p>
+          <p>&copy; {currentYear} {siteConfig.businessName}. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
