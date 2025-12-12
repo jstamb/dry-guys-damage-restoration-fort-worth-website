@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom'
+'use client'
+
+import Link from 'next/link'
 import { Phone, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { BUSINESS } from '../constants'
@@ -9,13 +11,13 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-primary">
+        <Link href="/" className="text-2xl font-bold text-primary">
           {BUSINESS.name}
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <Link to="/" className="text-gray-700 hover:text-primary font-medium">Home</Link>
-          <Link to="/contact" className="text-gray-700 hover:text-primary font-medium">Contact</Link>
+          <Link href="/" className="text-gray-700 hover:text-primary font-medium">Home</Link>
+          <Link href="/contact" className="text-gray-700 hover:text-primary font-medium">Contact</Link>
           <a
             href={`tel:${BUSINESS.phone}`}
             className="flex items-center gap-2 px-6 py-2.5 bg-accent text-white font-semibold rounded-lg hover:bg-accent/90 transition-colors"
@@ -35,8 +37,8 @@ export default function Header() {
 
       {isOpen && (
         <div className="md:hidden px-4 pb-4 space-y-3 border-t">
-          <Link to="/" className="block py-2 text-gray-700">Home</Link>
-          <Link to="/contact" className="block py-2 text-gray-700">Contact</Link>
+          <Link href="/" className="block py-2 text-gray-700">Home</Link>
+          <Link href="/contact" className="block py-2 text-gray-700">Contact</Link>
           <a
             href={`tel:${BUSINESS.phone}`}
             className="block py-3 bg-accent text-white text-center rounded-lg font-semibold"
