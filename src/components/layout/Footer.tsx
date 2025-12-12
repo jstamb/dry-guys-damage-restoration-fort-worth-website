@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
             <ul className="mt-4 space-y-2">
               {services.map((service) => (
                 <li key={service.name}>
-                  <Link href={service.href} className="text-sm hover:text-secondary-500 transition-colors">
+                  <Link href={`/services/${service.slug}`} className="text-sm hover:text-secondary-500 transition-colors">
                     {service.name}
                   </Link>
                 </li>
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
             <ul className="mt-4 space-y-2">
               {neighborhoods.map((area) => (
                 <li key={area.name}>
-                  <Link href={area.href} className="text-sm hover:text-secondary-500 transition-colors">
+                  <Link href={`/locations/${area.slug}`} className="text-sm hover:text-secondary-500 transition-colors">
                     {area.name}
                   </Link>
                 </li>
