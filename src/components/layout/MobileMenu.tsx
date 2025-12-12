@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import * as Accordion from '@radix-ui/react-accordion';
@@ -19,8 +21,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
   return (
     <div
       id="mobile-menu"
-      className={`fixed inset-0 z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${ 
-        isOpen ? 'translate-x-0' : 'translate-x-full' 
+      className={`fixed inset-0 z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${
+        isOpen ? 'translate-x-0' : 'translate-x-full'
       }`}
     >
       <div className="fixed inset-0 bg-black/50" onClick={() => setIsOpen(false)} aria-hidden="true"></div>
@@ -52,7 +54,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
                   <Accordion.Content className="overflow-hidden transition-all data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp">
                     <div className="pt-2 pb-4 pl-4">
                       {services.map((service) => (
-                        <Link key={service.name} href={service.href} onClick={handleLinkClick} className="block py-2 text-gray-600 hover:text-primary-600">
+                        <Link key={service.name} href={`/services/${service.slug}`} onClick={handleLinkClick} className="block py-2 text-gray-600 hover:text-primary-600">
                           {service.name}
                         </Link>
                       ))}
@@ -67,7 +69,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
                   <Accordion.Content className="overflow-hidden transition-all data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp">
                     <div className="pt-2 pb-4 pl-4">
                       {neighborhoods.map((location) => (
-                        <Link key={location.name} href={location.href} onClick={handleLinkClick} className="block py-2 text-gray-600 hover:text-primary-600">
+                        <Link key={location.name} href={`/locations/${location.slug}`} onClick={handleLinkClick} className="block py-2 text-gray-600 hover:text-primary-600">
                           {location.name}
                         </Link>
                       ))}
