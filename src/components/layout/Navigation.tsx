@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { ChevronDown } from 'lucide-react';
@@ -22,7 +24,7 @@ const Navigation: React.FC = () => {
               {services.map((service) => (
                 <li key={service.name}>
                    <NavigationMenu.Link asChild>
-                    <Link href={service.href} className="focus:shadow-primary-500 hover:bg-gray-100 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors focus:shadow-[0_0_0_2px]">
+                    <Link href={`/services/${service.slug}`} className="focus:shadow-primary-500 hover:bg-gray-100 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors focus:shadow-[0_0_0_2px]">
                       <div className="mb-[5px] font-medium leading-[1.2] text-gray-900">{service.name}</div>
                       <p className="text-mauve4 text-[14px] leading-[1.3] text-gray-600">{service.description}</p>
                     </Link>
@@ -46,7 +48,7 @@ const Navigation: React.FC = () => {
               {neighborhoods.map((location) => (
                  <li key={location.name}>
                    <NavigationMenu.Link asChild>
-                    <Link href={location.href} className="focus:shadow-primary-500 hover:bg-gray-100 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors focus:shadow-[0_0_0_2px]">
+                    <Link href={`/locations/${location.slug}`} className="focus:shadow-primary-500 hover:bg-gray-100 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors focus:shadow-[0_0_0_2px]">
                       <div className="font-medium leading-[1.2] text-gray-900">{location.name}</div>
                     </Link>
                   </NavigationMenu.Link>
