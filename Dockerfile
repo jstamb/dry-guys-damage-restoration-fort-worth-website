@@ -1,32 +1,43 @@
-# Build stage - compile React/Vite app
+# Next.js 14 Production Dockerfile
+# Multi-stage build for standalone output
+
+# Build stage
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files first for better caching
+# Install dependencies
 COPY package*.json ./
-
-# Install dependencies (use npm install since no package-lock.json exists)
-RUN npm install --legacy-peer-deps
+RUN npm ci
 
 # Copy source files
 COPY . .
 
-# Build the Vite app
+# Build the application
+ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
-# Production stage - serve built files with nginx
-FROM nginx:alpine
+# Production stage
+FROM node:20-alpine AS runner
 
-# Copy built files from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /app
 
-# Copy nginx config for Cloud Run (port 8080)
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Cloud Run requires port 8080
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=8080
+ENV HOSTNAME="0.0.0.0"
+
+# Create non-root user
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copy standalone output
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
 EXPOSE 8080
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "server.js"]
