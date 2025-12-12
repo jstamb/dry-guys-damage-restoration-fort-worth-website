@@ -12,7 +12,7 @@ export const SERVICES = ["water damage restoration","fire damage restoration"];
 
 export const TARGET_CITIES = [{"name":"Fort Worth","state":"TX"}];
 
-export const SEO_KEYWORDS = ["water damage restoration fort worth","fire damage restoration fort worth","fort worth water damage","fort worth fire damage repair","emergency restoration services fort worth","24/7 water damage fort worth","smoke damage cleanup fort worth"];
+export const SEO_KEYWORDS = ["water damage restoration Fort Worth","fire damage restoration Fort Worth","damage restoration Fort Worth TX","Fort Worth restoration company","emergency water removal Fort Worth","smoke damage cleanup Fort Worth","flood cleanup Fort Worth"];
 
 export const TRUST_BADGES = [
   'Licensed & Insured',
