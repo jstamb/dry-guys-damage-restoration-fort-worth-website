@@ -6,8 +6,8 @@ WORKDIR /app
 # Copy package files first for better caching
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --legacy-peer-deps
+# Install dependencies (use npm install since no package-lock.json exists)
+RUN npm install --legacy-peer-deps
 
 # Copy source files
 COPY . .
